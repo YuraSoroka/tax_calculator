@@ -1,18 +1,20 @@
-<div class="calculation-layout">
-    
-    <div class="calculation-containter">
-        <input class="salary-input" type="text" placeholder="Gross Annual Salary:">
-        <div class="calculate-button">
-            <img src="../../../../assets/icons/calculate.svg" alt="calculate-button">
+<form [formGroup]="grossAnnualSalaryForm">
+    <div class="calculation-layout">
+        
+        <div class="calculation-containter">
+            <input class="salary-input" type="text" placeholder="Gross Annual Salary:" formControlName="annualGrossSalary">
+            <div class="calculate-button" (click)="calculateTax()">
+                <img src="../../../../assets/icons/calculate.svg" alt="calculate-button">
+            </div>
+        </div>
+        <div class="result-container" *ngIf="this.result | async as taxResult ">
+            <h4>Gross Annual Salary: <strong>£ {{taxResult.grossAnnualSalary}}</strong></h4>
+            <h4>Gross Monthly Salary: <strong>£ {{taxResult.grossMonthlySalary}}</strong></h4>
+            <h4>Net Annual Salary: <strong>£ {{taxResult.netAnnualSalary}}</strong></h4>
+            <h4>Net Monthly Salary: <strong> £ {{taxResult.netMonthlySalary}}</strong></h4>
+            <h4>Annual Tax Paid: <strong>£ {{taxResult.annualTaxPaid}}</strong></h4>
+            <h4>Monthly Tax Paid: <strong>£ {{taxResult.monthlyTaxPaid}}</strong></h4>       
         </div>
     </div>
-    <div class="result-container">
-        <h4>Gross Annual Salary: <strong>£ 40000</strong></h4>
-        <h4>Gross Monthly Salary: <strong>£ 3333.33</strong></h4>
-        <h4>Net Annual Salary: <strong>£ 29000</strong></h4>
-        <h4>Net Monthly Salary: <strong> £ 2416.67</strong></h4>
-        <h4>Annual Tax Paid: <strong>£ 11000.00</strong></h4>
-        <h4>Monthly Tax Paid: <strong>£ 916.67</strong></h4>       
-    </div>
-</div>
+</form>
     
