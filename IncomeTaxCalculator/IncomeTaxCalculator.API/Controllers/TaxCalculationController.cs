@@ -9,9 +9,9 @@ namespace IncomeTaxCalculator.API.Controllers
     public class TaxCalculationController : ApiControllerBase
     {
         [HttpPost("calculate")]
-        public async Task<ActionResult<TaxResult>> CalculateTax(CalculateTaxCommand tax)
+        public async Task<ActionResult<TaxResult>> CalculateTax(CalculateTaxCommand taxCommand)
         {
-            return await Mediator.Send(tax);
+            return await Mediator.Send(taxCommand);
         }
     }
 }
