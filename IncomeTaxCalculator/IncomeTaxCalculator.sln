@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32414.318
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IncomeTaxCalculator", "IncomeTaxCalculator\IncomeTaxCalculator.csproj", "{6BBC7F92-DB92-42B0-8A4F-172E39FEE9CA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IncomeTaxCalculator.API", "IncomeTaxCalculator\IncomeTaxCalculator.API.csproj", "{6BBC7F92-DB92-42B0-8A4F-172E39FEE9CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IncomeTaxCalculator.Application", "IncomeTaxCalculator.Application\IncomeTaxCalculator.Application.csproj", "{99F3E361-91CC-4605-AD78-6E42EC61444A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IncomeTaxCalculator.Domain", "IncomeTaxCalculator.Domain\IncomeTaxCalculator.Domain.csproj", "{6D874296-6287-4891-8EEA-C1B419ECC368}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IncomeTaxCalculator.Infrastructure", "IncomeTaxCalculator.Infrastructure\IncomeTaxCalculator.Infrastructure.csproj", "{CA2CC44E-DB97-4147-B8AB-6D29263B8E26}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{6BBC7F92-DB92-42B0-8A4F-172E39FEE9CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BBC7F92-DB92-42B0-8A4F-172E39FEE9CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BBC7F92-DB92-42B0-8A4F-172E39FEE9CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99F3E361-91CC-4605-AD78-6E42EC61444A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99F3E361-91CC-4605-AD78-6E42EC61444A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99F3E361-91CC-4605-AD78-6E42EC61444A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99F3E361-91CC-4605-AD78-6E42EC61444A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D874296-6287-4891-8EEA-C1B419ECC368}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D874296-6287-4891-8EEA-C1B419ECC368}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D874296-6287-4891-8EEA-C1B419ECC368}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D874296-6287-4891-8EEA-C1B419ECC368}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA2CC44E-DB97-4147-B8AB-6D29263B8E26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA2CC44E-DB97-4147-B8AB-6D29263B8E26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA2CC44E-DB97-4147-B8AB-6D29263B8E26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA2CC44E-DB97-4147-B8AB-6D29263B8E26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
