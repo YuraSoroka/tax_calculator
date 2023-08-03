@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\IncomeTaxCalculator.Application\IncomeTaxCalculator.Application.csproj" />
     <ProjectReference Include="..\IncomeTaxCalculator.Infrastructure\IncomeTaxCalculator.Infrastructure.csproj" />
   </ItemGroup>
