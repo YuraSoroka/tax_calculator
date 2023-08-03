@@ -1,15 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using IncomeTaxCalculator.Application.Commands.Tax;
+using IncomeTaxCalculator.Domain.Entities;
+using Microsoft.AspNetCore.Mvc;
 
 namespace IncomeTaxCalculator.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class TaxCalculationController : ControllerBase
+    public class TaxCalculationController : ApiControllerBase
     {
-        [HttpGet]
-        public async Task<ActionResult> CalculateTax()
+        [HttpPost("calculate")]
+        public async Task<ActionResult<TaxResult>> CalculateTax(CalculateTaxCommand tax)
         {
-            return Ok();
+            return await Mediator.Send(tax);
         }
     }
 }
