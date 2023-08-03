@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #F5F5F5;
+}
+
+h1, h2, h3, h4, h5{
+    margin: 8px 0;
+    font-weight: 400;
+}
