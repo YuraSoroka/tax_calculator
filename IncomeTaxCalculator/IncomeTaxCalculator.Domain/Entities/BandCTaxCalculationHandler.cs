@@ -5,16 +5,20 @@ namespace IncomeTaxCalculator.Domain.Entities
 {
     public class BandCTaxCalculationHandler : TaxCalculationHandler
     {
-        public override decimal HandleTax(decimal grossAnnualSalary, TaxBand perviousTaxBand)
+        public BandCTaxCalculationHandler(TaxBand taxband)
+            : base(taxband)
         {
-            if (TaxBandHandler is not null && grossAnnualSalary >= perviousTaxBand.UpperTaxLimit)
+        }
+        public override decimal HandleTax(decimal grossAnnualSalary)
+        {
+            if (TaxBandHandler is not null && grossAnnualSalary >= TaxBand.UpperTaxLimit)
             {
-                generalTax += perviousTaxBand.UpperTaxLimit.Value * perviousTaxBand.TaxRate;
-                generalTax += TaxBandHandler.HandleTax(grossAnnualSalary - perviousTaxBand.UpperTaxLimit.Value, perviousTaxBand);
+                generalTax += TaxBand.UpperTaxLimit.Value * TaxBand.TaxRate;
+                generalTax += TaxBandHandler.HandleTax(grossAnnualSalary - TaxBand.UpperTaxLimit.Value);
             }
             else
             {
-                generalTax += perviousTaxBand.TaxRate * grossAnnualSalary;
+                generalTax += TaxBand.TaxRate * grossAnnualSalary;
             }
             return generalTax;
         }

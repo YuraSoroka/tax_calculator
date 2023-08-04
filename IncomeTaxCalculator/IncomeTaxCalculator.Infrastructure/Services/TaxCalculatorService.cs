@@ -4,45 +4,30 @@ using IncomeTaxCalculator.Domain.Entities;
 
 namespace IncomeTaxCalculator.Infrastructure.Services
 {
-    public class TaxCalculatorService : IAnnualTaxCalculator, IMonthlyTaxCalculator
+    public class TaxCalculatorService : IAnnualTaxCalculator
     {
-        private readonly byte monthCount = 12;
         public Task<decimal> CalculateAnnualTaxPaid(decimal grossAnnualSalary)
         {
-            TaxCalculationHandler taxBandACalculationHandler = new BandATaxCalculationHandler();
-            TaxCalculationHandler taxBandBCalculationHandler = new BandBTaxCalculationHandler();
-            TaxCalculationHandler taxBandCCalculationHandler = new BandCTaxCalculationHandler();
+            Console.WriteLine(Thread.CurrentThread.ManagedThreadId);
+
+            TaxBand taxBandA = new TaxBand(0, 0, 5000);
+            TaxBand taxBandB = new TaxBand(20, taxBandA.UpperTaxLimit.Value, 20000);
+            TaxBand taxBandC = new TaxBand(40, taxBandB.UpperTaxLimit.Value);
+
+            TaxCalculationHandler taxBandACalculationHandler = new BandATaxCalculationHandler(taxBandA);
+            TaxCalculationHandler taxBandBCalculationHandler = new BandBTaxCalculationHandler(taxBandB);
+            TaxCalculationHandler taxBandCCalculationHandler = new BandCTaxCalculationHandler(taxBandC);
 
             taxBandACalculationHandler.SetTaxBandHandler(taxBandBCalculationHandler);
             taxBandBCalculationHandler.SetTaxBandHandler(taxBandCCalculationHandler);
-            TaxBand taxBandA = new TaxBand(0, 0, 5000);
-
-            return Task.FromResult(taxBandACalculationHandler.HandleTax(grossAnnualSalary, taxBandA));
+             
+            return Task.Run(() => taxBandACalculationHandler.HandleTax(grossAnnualSalary));
         }
 
-        public Task<decimal> CalculateGrossAnnualSalary(decimal grossAnnualSalary)
-        {
-            return Task.FromResult(grossAnnualSalary);
-        }
         public Task<decimal> CalculateNetAnnualSalary(decimal grossAnnualSalary, decimal annualTaxPaid)
         {
             return Task.FromResult(grossAnnualSalary - annualTaxPaid);
         }
 
-        public Task<decimal> CalculateGrossMonthlySalary(decimal grossAnnualSalary)
-        {
-            return Task.FromResult(grossAnnualSalary / monthCount);
-        }
-
-        public Task<decimal> CalculateMonthlyTaxPaid(decimal annualTaxPaid)
-        {
-            return Task.FromResult(annualTaxPaid / monthCount);
-        }
-
-
-        public Task<decimal> CalculateNetMonthlySalary(decimal netAnnualSalary)
-        {
-            return Task.FromResult(netAnnualSalary / monthCount);
-        }
     }
 }

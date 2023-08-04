@@ -9,7 +9,6 @@ namespace IncomeTaxCalculator.Infrastructure
         public static IServiceCollection RegisterInfrastructureServices(this IServiceCollection services)
         {
             services.AddScoped<IAnnualTaxCalculator, TaxCalculatorService>();
-            services.AddScoped<IMonthlyTaxCalculator, TaxCalculatorService>();
             return services;
         }
     }

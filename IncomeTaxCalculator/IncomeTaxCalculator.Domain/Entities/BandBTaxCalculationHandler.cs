@@ -4,20 +4,21 @@ namespace IncomeTaxCalculator.Domain.Entities
 {
     public class BandBTaxCalculationHandler : TaxCalculationHandler
     {
-        public override decimal HandleTax(decimal grossAnnualSalary, TaxBand prevTaxBand)
+        public BandBTaxCalculationHandler(TaxBand taxband)
+            : base(taxband)
         {
-            if (TaxBandHandler is not null && grossAnnualSalary >= prevTaxBand.UpperTaxLimit)
+        }
+        public override decimal HandleTax(decimal grossAnnualSalary)
+        {
+            if (TaxBandHandler is not null && grossAnnualSalary >= TaxBand.UpperTaxLimit)
             {
-                TaxBand taxBandC = new TaxBand(
-                    40,
-                    prevTaxBand.UpperTaxLimit.Value);
-                decimal balance = grossAnnualSalary - (prevTaxBand.UpperTaxLimit.Value - prevTaxBand.LowerTaxLimit);
-                generalTax += (prevTaxBand.UpperTaxLimit.Value - prevTaxBand.LowerTaxLimit) * prevTaxBand.TaxRate;
-                generalTax += TaxBandHandler.HandleTax(balance, taxBandC);
+                decimal balance = grossAnnualSalary - (TaxBand.UpperTaxLimit.Value - TaxBand.LowerTaxLimit);
+                generalTax += (TaxBand.UpperTaxLimit.Value - TaxBand.LowerTaxLimit) * TaxBand.TaxRate;
+                generalTax += TaxBandHandler.HandleTax(balance);
             }
             else
             {
-                generalTax += grossAnnualSalary * prevTaxBand.TaxRate;
+                generalTax += grossAnnualSalary * TaxBand.TaxRate;
             }
             return generalTax;
         }

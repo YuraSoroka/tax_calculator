@@ -1,4 +1,5 @@
-﻿using IncomeTaxCalculator.Application.Common.Interfaces;
+﻿using IncomeTaxCalculator.Application.Common.Helpers;
+using IncomeTaxCalculator.Application.Common.Interfaces;
 using IncomeTaxCalculator.Domain.Entities;
 using MediatR;
 
@@ -12,28 +13,23 @@ namespace IncomeTaxCalculator.Application.Commands.Tax
     public class CalculateTaxCommandHandler : IRequestHandler<CalculateTaxCommand, TaxResult>
     {
         private IAnnualTaxCalculator _annualTaxCalculator;
-        private IMonthlyTaxCalculator _monthlyTaxCalculator;
 
-        public CalculateTaxCommandHandler(IAnnualTaxCalculator annualTaxCalculator, IMonthlyTaxCalculator monthlyTaxCalculator)
+        public CalculateTaxCommandHandler(IAnnualTaxCalculator annualTaxCalculator)
         {
             _annualTaxCalculator = annualTaxCalculator;
-            _monthlyTaxCalculator = monthlyTaxCalculator;
         }
         public async Task<TaxResult> Handle(CalculateTaxCommand request, CancellationToken cancellationToken)
         {
             var annualTaxPaid = await _annualTaxCalculator.CalculateAnnualTaxPaid(request.GrossAnnualSalary);
             var netAnnualSalary = await _annualTaxCalculator.CalculateNetAnnualSalary(request.GrossAnnualSalary, annualTaxPaid);
-            var netMonthlySalary = await _monthlyTaxCalculator.CalculateNetMonthlySalary(netAnnualSalary);
-            var grossMonthlySalary = await _monthlyTaxCalculator.CalculateGrossMonthlySalary(request.GrossAnnualSalary);
-            var monthlyTaxPaid = await _monthlyTaxCalculator.CalculateMonthlyTaxPaid(annualTaxPaid);
             return new TaxResult
             {
-                AnnualTaxPaid = annualTaxPaid,
                 GrossAnnualSalary = request.GrossAnnualSalary,
+                GrossMonthlySalary = request.GrossAnnualSalary.GetMonthlyValue(),
+                AnnualTaxPaid = annualTaxPaid,
+                MonthlyTaxPaid = annualTaxPaid.GetMonthlyValue(),
                 NetAnnualSalary = netAnnualSalary,
-                GrossMonthlySalary = grossMonthlySalary,
-                NetMonthlySalary = netMonthlySalary,
-                MonthlyTaxPaid = monthlyTaxPaid
+                NetMonthlySalary = netAnnualSalary.GetMonthlyValue(),
             };
         }
     }

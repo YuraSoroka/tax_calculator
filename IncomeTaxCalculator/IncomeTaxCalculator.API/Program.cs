@@ -1,10 +1,11 @@
+using FluentValidation.AspNetCore;
 using IncomeTaxCalculator.Application;
 using IncomeTaxCalculator.Infrastructure;
-
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
+builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.RegisterApplicationServices();
