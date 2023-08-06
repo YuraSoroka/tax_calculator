@@ -1,17 +1,11 @@
-﻿using IncomeTaxCalculator.Domain.Entities;
+﻿using IncomeTaxCalculator.Application.Common.Interfaces;
+using IncomeTaxCalculator.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace IncomeTaxCalculator.Infrastructure.Data
 {
     public class ApplicationDbContext : DbContext
     {
-        private IConfiguration configuration;
-        public ApplicationDbContext(IConfiguration config)
-        {
-            configuration = config;
-        }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(Environment.GetEnvironmentVariable("TaxCalculatorConnectionString"));
