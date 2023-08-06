@@ -1,7 +1,8 @@
 # Income Tax Calculator
 ### Application was made with ability to scale and easy-to-maintain as a whole solution. 
 #### Note: Models can be easily extended. Infrastructure layer dependency is used only for dependency registration
-## Angular client for used to create a UI from scratch
+### Angular client for used to create a UI from scratch. 
+### Added client-side and backend-side validation.
 ![tax_calculator](https://github.com/YuraSoroka/tax_calculator/assets/72869941/2c4f47eb-f30d-47c5-9951-f76477fbee5d)
 
 ### Was added an ability to connect to a relational DB MSSQL Server - a history of calculated tax will be written in DB:
