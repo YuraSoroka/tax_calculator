@@ -1,0 +1,60 @@
+@import "../../../../variables";
+
+.calculation-layout {
+    padding: 64px 25%;
+    font-size: 24px;
+    height: calc(100vh - 64px * 4);
+    .calculation-containter {
+        display: flex;
+        
+        .salary-input {
+          font-size: 20px;
+          color: $black;
+          width: 100%;
+          height: 64px;
+          box-sizing: border-box;
+          letter-spacing: 1px;
+          padding: 8px 16px;
+          border: 1px solid $grey;
+          background: transparent;
+          font-family: inherit;
+        }
+        .salary-input:focus {
+          outline: none;
+          border: 1px solid $border;
+        }
+
+        .calculate-button {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 64px;
+          height: 64px;
+          font-size: 16px;
+          background: $border;
+        }
+        .calculate-button:hover {
+          cursor: pointer;
+          opacity: 0.8;
+        }
+
+    }
+    .result-container {
+        box-sizing: border-box;
+        margin-top: 32px;
+        margin-bottom: 32px;
+        padding: 16px 32px;
+        border: 1px solid $grey;
+        height: fit-content;
+        width: 100%;
+    }
+
+    .error-msg{
+      margin: 16px 0;
+      padding: 16px;
+      border: 1px solid red;
+      background-color: rgba(255, 0, 0, 0.25);
+      font-size: 18px;
+      color: inherit;
+    }
+}

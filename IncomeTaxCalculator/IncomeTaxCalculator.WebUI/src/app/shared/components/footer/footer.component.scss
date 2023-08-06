@@ -1,0 +1,15 @@
+@import "../../../../variables";
+
+.footer{
+    position: relative;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 64px;
+    font-size: 16pxpx;
+    font-weight: 500;
+    box-shadow: $grey 0px 1px 3px 0px, $grey 0px 1px 2px 0px;
+    color: $black;
+    background: $accent;
+}

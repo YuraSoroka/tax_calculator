@@ -10,6 +10,7 @@
   "profiles": {
     "IncomeTaxCalculator": {
       "commandName": "Project",
+      "launchUrl": "swagger",
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "applicationUrl": "https://localhost:7078;http://localhost:5078",
@@ -20,6 +21,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
+      "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
