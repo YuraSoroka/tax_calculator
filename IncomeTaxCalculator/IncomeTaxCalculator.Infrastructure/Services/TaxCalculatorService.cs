@@ -1,6 +1,7 @@
 ﻿using IncomeTaxCalculator.Application.Common.Interfaces;
 using IncomeTaxCalculator.Domain.Common;
 using IncomeTaxCalculator.Domain.Entities;
+using IncomeTaxCalculator.Domain.ValueObjects;
 
 namespace IncomeTaxCalculator.Infrastructure.Services
 {
@@ -12,9 +13,9 @@ namespace IncomeTaxCalculator.Infrastructure.Services
             TaxBand taxBandB = new TaxBand(20, taxBandA.UpperTaxLimit.Value, 20000);
             TaxBand taxBandC = new TaxBand(40, taxBandB.UpperTaxLimit.Value);
 
-            TaxCalculationHandler taxBandACalculationHandler = new BandATaxCalculationHandler(taxBandA);
-            TaxCalculationHandler taxBandBCalculationHandler = new BandBTaxCalculationHandler(taxBandB);
-            TaxCalculationHandler taxBandCCalculationHandler = new BandCTaxCalculationHandler(taxBandC);
+            TaxCalculationHandler taxBandACalculationHandler = new TaxBandCalculationHandler(taxBandA);
+            TaxCalculationHandler taxBandBCalculationHandler = new TaxBandCalculationHandler(taxBandB);
+            TaxCalculationHandler taxBandCCalculationHandler = new TaxBandCalculationHandler(taxBandC);
 
             taxBandACalculationHandler.SetTaxBandHandler(taxBandBCalculationHandler);
             taxBandBCalculationHandler.SetTaxBandHandler(taxBandCCalculationHandler);
