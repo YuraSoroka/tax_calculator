@@ -1,6 +1,8 @@
-﻿namespace IncomeTaxCalculator.Domain.Entities
+﻿using IncomeTaxCalculator.Domain.Common;
+
+namespace IncomeTaxCalculator.Domain.Entities
 {
-    public class TaxResult
+    public class TaxResult : DbEntity
     {
         public decimal GrossAnnualSalary { get; set; }
         public decimal NetAnnualSalary { get; set; }

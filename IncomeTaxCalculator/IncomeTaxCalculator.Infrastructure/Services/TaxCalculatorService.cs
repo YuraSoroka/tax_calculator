@@ -8,8 +8,6 @@ namespace IncomeTaxCalculator.Infrastructure.Services
     {
         public Task<decimal> CalculateAnnualTaxPaid(decimal grossAnnualSalary)
         {
-            Console.WriteLine(Thread.CurrentThread.ManagedThreadId);
-
             TaxBand taxBandA = new TaxBand(0, 0, 5000);
             TaxBand taxBandB = new TaxBand(20, taxBandA.UpperTaxLimit.Value, 20000);
             TaxBand taxBandC = new TaxBand(40, taxBandB.UpperTaxLimit.Value);
